@@ -1,130 +1,72 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { Router } from '@angular/router';
-import { IonContent, IonHeader, IonToolbar } from '@ionic/angular';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Zemu Guitar Tuner</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #222;
+      background: #fff;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+    h1 { font-size: 1.9rem; margin-bottom: 0.25rem; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; border-bottom: 1px solid #ddd; padding-bottom: 0.3rem; }
+    .meta { color: #555; font-size: 0.95rem; }
+    ul { padding-left: 1.3rem; }
+    a { color: #0b5fff; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #121212; color: #e6e6e6; }
+      h2 { border-color: #333; }
+      .meta { color: #aaa; }
+      a { color: #7aa7ff; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy</h1>
+  <p class="meta">
+    <strong>App:</strong> [App Name] (the "App")<br>
+    <strong>Developer:</strong> [Your Name or Company]<br>
+    <strong>Effective date:</strong> [Date]<br>
+    <strong>Contact:</strong> <a href="mailto:your-email@example.com">your-email@example.com</a>
+  </p>
 
-@Component({
-  selector: 'app-privacy-page',
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [IonContent, IonHeader, IonToolbar],
-  template: `
-    <ion-header class="ion-no-border">
-      <ion-toolbar>
-        <div class="bar">
-          <button class="back" type="button" (click)="back()" aria-label="Back to tuner">â€¹</button>
-          <h1>Privacy Policy</h1>
-        </div>
-      </ion-toolbar>
-    </ion-header>
+  <h2>Overview</h2>
+  <p>[App Name] is a free guitar tuner. Your privacy matters, so the App is designed to work without collecting, storing, or sharing any personal information.</p>
 
-    <ion-content>
-      <main class="privacy">
-        <p class="updated">Last updated: 26 October 2026</p>
+  <h2>Information We Collect</h2>
+  <p>We do not collect, store, transmit, or share any personal data. The App does not require you to create an account or provide your name, email address, location, or any other personal details.</p>
 
-        <h2>Overview</h2>
-        <p>
-          Zemu Guitar Tuner ("the app") is a guitar tuning utility. This policy explains
-          what data the app collects, how it is used, and your choices.
-        </p>
+  <h2>Microphone Permission</h2>
+  <p>The App asks for microphone access for one purpose: to detect the pitch of the notes you play so it can show you whether your instrument is in tune.</p>
+  <ul>
+    <li>Audio is processed in real time, on your device only.</li>
+    <li>Audio is <strong>never recorded, saved, or sent</strong> to us or to any third party.</li>
+    <li>Microphone access is used only while the App is open and the tuner is running.</li>
+    <li>You can revoke the permission at any time in your device's settings. The tuner will not work without it.</li>
+  </ul>
 
-        <h2>Audio and microphone</h2>
-        <p>
-          The app requests microphone access only while you are tuning. Audio is processed
-          locally on your device to detect pitch. No audio is recorded, stored, or
-          transmitted. The microphone is released when you stop or leave the app.
-        </p>
+  <h2>Third-Party Services</h2>
+  <p>The App does not use advertising, analytics, crash-reporting, or any other third-party services that collect user data.</p>
 
-        <h2>Data collection</h2>
-        <p>
-          The app does not collect personal data, does not require an account, and has no
-          network sync. Settings (reference pitch, tolerance, theme, custom tunings) are
-          stored locally on your device and never leave it.
-        </p>
+  <h2>Data Storage and Security</h2>
+  <p>Any settings you choose in the App (such as the selected tuning) are stored locally on your device. We have no access to them, and they are removed when you uninstall the App.</p>
 
-        <h2>Third-party services</h2>
-        <p>
-          The app does not integrate third-party analytics, advertising, or tracking
-          services.
-        </p>
+  <h2>Children's Privacy</h2>
+  <p>The App does not knowingly collect any information from anyone, including children under 13. Because no personal data is collected, there is nothing to disclose or delete.</p>
 
-        <h2>Children's privacy</h2>
-        <p>
-          The app is not directed at children under 13 and does not knowingly collect
-          information from them.
-        </p>
+  <h2>Your Rights</h2>
+  <p>Since we hold no personal data about you, there is nothing to access, correct, or delete. If you have any privacy questions, contact us at the email above.</p>
 
-        <h2>Changes to this policy</h2>
-        <p>
-          This policy may be updated. Changes will be reflected in this page with a new
-          "Last updated" date.
-        </p>
+  <h2>Changes to This Policy</h2>
+  <p>We may update this policy from time to time. Changes will be posted on this page with a new effective date. Continued use of the App after changes means you accept the updated policy.</p>
 
-        <h2>Contact</h2>
-        <p>
-          Questions about this policy can be sent to the developer via the app store
-          listing.
-        </p>
-      </main>
-    </ion-content>
-  `,
-  styles: [
-    `
-      ion-toolbar {
-        --background: var(--surface);
-        --color: var(--text);
-        --border-color: var(--border);
-      }
-      .back {
-        background: transparent;
-        border: 0;
-        color: var(--text);
-        font-size: 1.6rem;
-        line-height: 1;
-        padding: 0 0.5rem;
-        cursor: pointer;
-      }
-      .bar {
-        display: flex;
-        align-items: center;
-        gap: 0.25rem;
-        min-height: 56px;
-        padding: 0 0.5rem;
-      }
-      .bar h1 {
-        font-size: 1.15rem;
-        font-weight: 600;
-        margin: 0;
-      }
-      ion-content {
-        --background: var(--bg);
-      }
-      .privacy {
-        max-width: 560px;
-        margin: 0 auto;
-        padding: 1rem 1.25rem 2.5rem;
-        color: var(--text);
-        line-height: 1.5;
-      }
-      .privacy h2 {
-        font-size: 1.05rem;
-        margin: 1.25rem 0 0.4rem;
-      }
-      .privacy p {
-        margin: 0 0 0.6rem;
-        color: var(--muted);
-      }
-      .updated {
-        font-size: 0.8rem;
-        color: var(--muted);
-      }
-    `,
-  ],
-})
-export class PrivacyPage {
-  private readonly router = inject(Router);
-
-  back(): void {
-    void this.router.navigate(['/']);
-  }
-}
-
+  <h2>Contact Us</h2>
+  <p>If you have questions about this Privacy Policy, email <a href="mailto:your-email@example.com">your-email@example.com</a>.</p>
+</body>
+</html>
